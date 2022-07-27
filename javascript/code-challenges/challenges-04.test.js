@@ -220,25 +220,13 @@ You DO NOT need to use your solution to Challenge 12 in completing Challenge 13.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = (arr) => {
-  let weekDaysOrder = {
-    Monday: 1,
-    Tuesday: 2,
-    Wednesday: 3,
-    Thursday: 4,
-    Friday: 5,
-    Saturday: 6,
-    Sunday: 7,
- };
-  return arr.sort((a, b) => {
-
-    weekDaysOrder[a.dayOfWeek] - weekDaysOrder[b.dayOfWeek]
-
-    if (weekDaysOrder[a.dayOfWeek]===weekDaysOrder[b.dayOfWeek]){
+  
+  return sortMeetingsByDay(arr).sort((a, b) => {
+    if (a.dayOfWeek === b.dayOfWeek){
       if (parseInt((a.end-a.start)) < parseInt((b.end-b.start))) {
         return (-1)}}
     else if (parseInt((a.end-a.start)) > parseInt((b.end-b.start))) {
       return (1)}
-        
  });
   // return arr.sort((a,b) => (a.end-a.start) - (b.end-b.start));
 };
