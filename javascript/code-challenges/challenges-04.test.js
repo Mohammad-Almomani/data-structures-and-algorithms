@@ -220,7 +220,15 @@ You DO NOT need to use your solution to Challenge 12 in completing Challenge 13.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = (arr) => {
-  return arr.sort((a,b) => (a.end-a.start) - (b.end-b.start));
+  
+  return sortMeetingsByDay(arr).sort((a, b) => {
+    if (a.dayOfWeek === b.dayOfWeek){
+      if (parseInt((a.end-a.start)) < parseInt((b.end-b.start))) {
+        return (-1)}}
+    else if (parseInt((a.end-a.start)) > parseInt((b.end-b.start))) {
+      return (1)}
+ });
+  // return arr.sort((a,b) => (a.end-a.start) - (b.end-b.start));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -364,7 +372,7 @@ describe('Testing challenge 12', () => {
   });
 });
 
-xdescribe('Testing challenge 13', () => {
+describe('Testing challenge 13', () => {
   test('It should sort meetings by when they happen', () => {
     expect(sortSchedule(meetings)).toStrictEqual([
       new Meeting('Monday', '0900', '0945'),
